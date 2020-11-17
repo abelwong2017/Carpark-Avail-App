@@ -17,7 +17,26 @@
 
 # Installation Guide
 
-TBC
+1. Install .net Core
+2. Change directory into "Carpark API"
+3. Run the solution file with your dotnet CLI
+   `dotnet sln "Carpark API"`
+
+# Configuration
+
+1. In the directory Carpark API => appsettings.json , set your secret, frontend end point and backend endpoint as follow:
+
+```
+ {
+    "JWT": {
+        "Secret": "JWT Secret Here",
+        "ValidAudience": "Front End Endpoint",
+        "ValidIssuer": "Back End Endpoint"
+    },
+ }
+```
+
+\*\* You can get your backend endpoint by running the solution and seeing what the endpoint returns
 
 # File Structure
 

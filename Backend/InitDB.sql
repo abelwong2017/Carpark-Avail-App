@@ -1,0 +1,10 @@
+DROP DATABASE IF EXISTS carparkDB;
+CREATE SCHEMA IF NOT EXISTS carparkDB;
+use carparkDB;
+CREATE TABLE Users (
+    Email VARCHAR(50) PRIMARY KEY  NOT NULL UNIQUE,
+    Password VARCHAR(255) NOT NULL,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    ContactNumber int
+);
