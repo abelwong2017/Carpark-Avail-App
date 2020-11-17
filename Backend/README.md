@@ -22,7 +22,7 @@
 3. Run the solution file with your dotnet CLI
    `dotnet sln "Carpark API"`
 
-#Configuration
+# Configuration
 
 1. In the directory Carpark API => appsettings.json , set your secret, frontend end point and backend endpoint as follow:
 
