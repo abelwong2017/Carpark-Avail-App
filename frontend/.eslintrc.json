@@ -1,0 +1,45 @@
+{
+  "extends": [
+    "prettier",
+    "prettier/standard",
+    "prettier/react",
+    "plugin:react/recommended"
+  ],
+  "parser": "babel-eslint",
+  "plugins": ["prettier"],
+  "rules": {
+    		"prettier/prettier": [
+			"warn",
+			{
+				"tabWidth": 4
+			}
+		],
+    "spaced-comment": "error",
+		"no-unused-vars": "warn",
+		"no-console": "warn",
+		"func-names": "off",
+    "object-shorthand":"off",
+    "class-methods-use-this":"off",
+    "jsx-a11y/href-no-hash": ["off"],
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types":"warn",
+    "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }]
+  },
+   "env": {
+    "browser": true
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
+  },
+	"parserOptions": {
+		"sourceType": "module",
+		"ecmaVersion": 2015,
+		"ecmaFeatures": {
+			"jsx": true,
+			"modules": true
+		}
+	}
+}
