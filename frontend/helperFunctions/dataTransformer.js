@@ -47,9 +47,11 @@ export default function convertData(response) {
             rowObj["availableLots"] =
                 lotType.lots_available;
             rowObj["totalLots"] = lotType.total_lots;
-            rowObj["percentageAvailable"] =
-                lotType.lots_available /
-                lotType.total_lots;
+            rowObj["percentageAvailable"] = (
+                (lotType.lots_available /
+                    lotType.total_lots) *
+                100
+            ).toFixed(1);
             output.push(rowObj);
             rowObj = {};
         });
