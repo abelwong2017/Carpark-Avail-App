@@ -1,3 +1,7 @@
+.componentContainer {
+  padding: 1rem;
+}
+
 .headerContainer {
   display: flex;
   align-content: center;
@@ -15,4 +19,9 @@
 
 .logo {
   margin-left: 5px;
+}
+
+.filterRow:hover {
+  cursor: default !important;
+  margin: 0 !important;
 }

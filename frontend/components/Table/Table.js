@@ -6,8 +6,17 @@ import React, {
 import PropTypes from "prop-types";
 import styles from "./TableStyles.module.scss";
 
+// Component Imports
+import GlobalFilter from "./GlobalFilter/GlobalFilter";
+import LotTypeFilter from "./LotTypeFilter/LotTypeFilter";
+
 // Node Imports
-import { useTable, useSortBy } from "react-table";
+import {
+    useTable,
+    useSortBy,
+    useGlobalFilter,
+    useFilters,
+} from "react-table";
 
 // MUI Components
 import { useStyles } from "./TableStyles";
@@ -26,6 +35,14 @@ import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 function Table({ columns, data }) {
     const classes = useStyles();
     data = useMemo(() => [...data], []);
+
+    const defaultColumn = React.useMemo(
+        () => ({
+            // Let's set up our default Filter UI
+            Filter: LotTypeFilter,
+        }),
+        []
+    );
     // State and function for table
     const {
         getTableProps,
@@ -33,10 +50,13 @@ function Table({ columns, data }) {
         headerGroups,
         rows,
         prepareRow,
+        state,
+        setGlobalFilter,
     } = useTable(
         {
             columns,
             data,
+            defaultColumn,
             initialState: {
                 sortBy: [
                     {
@@ -46,104 +66,169 @@ function Table({ columns, data }) {
                 ],
             },
         },
+        useFilters,
+        useGlobalFilter,
         useSortBy
     );
 
+    const { globalFilter } = state;
+
     return (
-        <TableContainer
-            component={Paper}
-            elevation={3}
-        >
-            <MaUTable {...getTableProps()}>
-                <TableHead>
-                    {headerGroups.map(
-                        (headerGroup) => (
-                            // eslint-disable-next-line react/jsx-key
-                            <TableRow
-                                {...headerGroup.getHeaderGroupProps()}
-                            >
-                                {headerGroup.headers.map(
-                                    (column) => (
-                                        // eslint-disable-next-line react/jsx-key
-                                        <TableCell
-                                            align="center"
-                                            {...column.getHeaderProps(
-                                                column.getSortByToggleProps()
-                                            )}
-                                            sortDescFirst="true"
-                                        >
-                                            <div
-                                                className={
-                                                    styles.headerContainer
-                                                }
-                                            >
-                                                {column.render(
-                                                    "Header"
-                                                )}{" "}
-                                                <span
-                                                    className={
-                                                        styles.logoContainer
-                                                    }
-                                                >
-                                                    {column.isSorted ? (
-                                                        column.isSortedDesc ? (
-                                                            <ArrowDownwardIcon
-                                                                className={
-                                                                    styles.logo
-                                                                }
-                                                            />
-                                                        ) : (
-                                                            <ArrowUpwardIcon
-                                                                className={
-                                                                    styles.logo
-                                                                }
-                                                            />
-                                                        )
-                                                    ) : (
-                                                        <SortIcon
-                                                            className={
-                                                                styles.logo
-                                                            }
-                                                        />
+        <div className={styles.componentContainer}>
+            <GlobalFilter
+                filter={globalFilter}
+                setFilter={setGlobalFilter}
+            />
+
+            <TableContainer
+                component={Paper}
+                elevation={3}
+            >
+                <MaUTable {...getTableProps()}>
+                    <TableHead>
+                        {headerGroups.map(
+                            (headerGroup, index) => (
+                                // eslint-disable-next-line react/jsx-key
+                                <>
+                                    <TableRow
+                                        {...headerGroup.getHeaderGroupProps()}
+                                    >
+                                        {headerGroup.headers.map(
+                                            (
+                                                column
+                                            ) => (
+                                                // eslint-disable-next-line react/jsx-key
+                                                <TableCell
+                                                    align="center"
+                                                    {...column.getHeaderProps(
+                                                        column.getSortByToggleProps()
                                                     )}
-                                                </span>
-                                            </div>
-                                        </TableCell>
-                                    )
-                                )}
-                            </TableRow>
-                        )
-                    )}
-                </TableHead>
-                <TableBody {...getTableBodyProps()}>
-                    {rows.map((row, i) => {
-                        prepareRow(row);
-                        return (
-                            // eslint-disable-next-line react/jsx-key
-                            <TableRow
-                                {...row.getRowProps()}
-                            >
-                                {row.cells.map(
-                                    (cell) => {
-                                        return (
-                                            // eslint-disable-next-line react/jsx-key
-                                            <TableCell
-                                                align="center"
-                                                {...cell.getCellProps()}
-                                            >
-                                                {cell.render(
-                                                    "Cell"
-                                                )}
-                                            </TableCell>
-                                        );
-                                    }
-                                )}
-                            </TableRow>
-                        );
-                    })}
-                </TableBody>
-            </MaUTable>
-        </TableContainer>
+                                                >
+                                                    <div
+                                                        className={
+                                                            styles.headerContainer
+                                                        }
+                                                    >
+                                                        {column.render(
+                                                            "Header"
+                                                        )}{" "}
+                                                        <span
+                                                            className={
+                                                                styles.logoContainer
+                                                            }
+                                                        >
+                                                            {column.canSort ? (
+                                                                column.isSorted ? (
+                                                                    column.isSortedDesc ? (
+                                                                        <ArrowDownwardIcon
+                                                                            className={
+                                                                                styles.logo
+                                                                            }
+                                                                        />
+                                                                    ) : (
+                                                                        <ArrowUpwardIcon
+                                                                            className={
+                                                                                styles.logo
+                                                                            }
+                                                                        />
+                                                                    )
+                                                                ) : (
+                                                                    <SortIcon
+                                                                        className={
+                                                                            styles.logo
+                                                                        }
+                                                                    />
+                                                                )
+                                                            ) : null}
+                                                        </span>
+                                                    </div>
+                                                </TableCell>
+                                            )
+                                        )}
+                                    </TableRow>
+                                    <TableRow
+                                        {...headerGroup.getHeaderGroupProps()}
+                                        key={
+                                            index +
+                                            "filterRow"
+                                        }
+                                        onClick={null}
+                                        className={
+                                            styles.filterRow
+                                        }
+                                    >
+                                        {headerGroup.headers.map(
+                                            (
+                                                column,
+                                                index
+                                            ) => (
+                                                // eslint-disable-next-line react/jsx-key
+                                                <TableCell
+                                                    align="center"
+                                                    {...column.getHeaderProps(
+                                                        column.getSortByToggleProps()
+                                                    )}
+                                                    key={
+                                                        index +
+                                                        "filterCell"
+                                                    }
+                                                    onClick={
+                                                        null
+                                                    }
+                                                    className={
+                                                        styles.filterRow
+                                                    }
+                                                    style={{
+                                                        padding: 0,
+                                                    }}
+                                                >
+                                                    <>
+                                                        {column.canFilter
+                                                            ? column.render(
+                                                                  "Filter"
+                                                              )
+                                                            : null}
+                                                    </>
+                                                </TableCell>
+                                            )
+                                        )}
+                                    </TableRow>
+                                </>
+                            )
+                        )}
+                    </TableHead>
+                    <TableBody
+                        {...getTableBodyProps()}
+                    >
+                        {rows.map((row, i) => {
+                            prepareRow(row);
+                            return (
+                                // eslint-disable-next-line react/jsx-key
+                                <TableRow
+                                    {...row.getRowProps()}
+                                >
+                                    {row.cells.map(
+                                        (cell) => {
+                                            return (
+                                                // eslint-disable-next-line react/jsx-key
+                                                <TableCell
+                                                    align="center"
+                                                    {...cell.getCellProps()}
+                                                >
+                                                    {cell.render(
+                                                        "Cell"
+                                                    )}
+                                                </TableCell>
+                                            );
+                                        }
+                                    )}
+                                </TableRow>
+                            );
+                        })}
+                    </TableBody>
+                </MaUTable>
+            </TableContainer>
+        </div>
     );
 }
 
