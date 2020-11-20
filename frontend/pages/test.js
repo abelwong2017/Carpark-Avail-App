@@ -8,6 +8,7 @@ import convertData from "../helperFunctions/dataTransformer";
 import { response } from "../public/response";
 
 import Table from "../components/Table/Table";
+import SkeletonTable from "../components/Table/SkeletonTable/SkeletonTable";
 
 import LotTypeFilter from "../components/Table/LotTypeFilter/LotTypeFilter";
 
@@ -68,7 +69,9 @@ const test = (props) => {
                     columns={columns}
                     data={data}
                 ></Table>
-            ) : null}
+            ) : (
+                <SkeletonTable />
+            )}
         </div>
     );
 };
