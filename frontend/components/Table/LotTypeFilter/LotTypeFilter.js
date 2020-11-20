@@ -35,11 +35,11 @@ function LotTypeFilter({ column }) {
                 <TextField
                     id="standard-select-lot-type"
                     select
-                    label="Lot Type"
+                    label=""
                     value={filterValue}
                     onChange={handleChange}
                     style={{ width: "auto" }}
-                    helperText="Select Lot Type"
+                    helperText="Select a filter"
                 >
                     <MenuItem key="All" value="">
                         All

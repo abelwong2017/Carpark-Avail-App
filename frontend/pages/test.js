@@ -29,6 +29,7 @@ const test = (props) => {
                 Header: "Lot Type",
                 accessor: "lotType",
                 filter: "includes",
+                disableFilters: false,
             },
             {
                 Header: "Available Lots",

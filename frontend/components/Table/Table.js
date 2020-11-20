@@ -9,6 +9,7 @@ import styles from "./TableStyles.module.scss";
 // Component Imports
 import GlobalFilter from "./GlobalFilter/GlobalFilter";
 import LotTypeFilter from "./LotTypeFilter/LotTypeFilter";
+import { BorderLinearProgress } from "./TableStyles";
 
 // Node Imports
 import {
@@ -40,6 +41,7 @@ function Table({ columns, data }) {
         () => ({
             // Let's set up our default Filter UI
             Filter: LotTypeFilter,
+            disableFilters: true,
         }),
         []
     );
@@ -215,8 +217,27 @@ function Table({ columns, data }) {
                                                     align="center"
                                                     {...cell.getCellProps()}
                                                 >
-                                                    {cell.render(
-                                                        "Cell"
+                                                    {cell
+                                                        .column
+                                                        .Header ===
+                                                    "Percentage Available" ? (
+                                                        <>
+                                                            <BorderLinearProgress
+                                                                variant="determinate"
+                                                                value={parseInt(
+                                                                    cell.value
+                                                                )}
+                                                            />
+                                                            {cell.render(
+                                                                "Cell"
+                                                            )}
+
+                                                            %
+                                                        </>
+                                                    ) : (
+                                                        cell.render(
+                                                            "Cell"
+                                                        )
                                                     )}
                                                 </TableCell>
                                             );
