@@ -1,5 +1,5 @@
 .background {
-  background-color: black;
+  background: rgba(0, 0, 0, 1);
   width: 100%;
   height: auto;
   min-height: 100vh;
@@ -17,21 +17,4 @@
   min-height: 100vh;
   filter: blur(15px);
   -webkit-filter: blur(15px);
-}
-.header {
-  text-align: center;
-  color: white;
-  font-weight: 800;
-  font-size: 5rem;
-  position: relative;
-  top: 2rem;
-  margin: 3rem;
-}
-
-.backdrop {
-  background-color: rgba(255, 255, 255, 0.2);
-  width: 40%;
-  height: auto;
-  border-radius: 1rem;
-  margin: 2rem;
 }

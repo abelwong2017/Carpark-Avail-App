@@ -4,6 +4,7 @@ import styles from "./LoginForm.module.scss";
 import UserErrorModal from "./UserErrorModal/UserErrorModal";
 import { useStyles } from "./LoginFormStyles";
 import { SessionContext } from "../../pages/_app";
+import { useRouter } from "next/router";
 
 // Node components
 import { Formik, Form, Field } from "formik";
@@ -20,6 +21,7 @@ import { useTheme } from "@material-ui/core/styles";
 
 function LoginForm(props) {
     const classes = useStyles();
+    const router = useRouter();
     const { session, setSession } = useContext(
         SessionContext
     );
@@ -186,11 +188,23 @@ function LoginForm(props) {
                                         response.data
                                             .token
                                     );
+                                    localStorage.setItem(
+                                        "token",
+                                        response.data
+                                            .token
+                                    );
+                                    console.log(
+                                        response.data
+                                            .token
+                                    );
                                     setSubmitting(
                                         false
                                     );
                                     console.log(
                                         "success"
+                                    );
+                                    router.push(
+                                        "/dashboard"
                                     );
                                 })
                                 .catch((err) => {
@@ -259,11 +273,19 @@ function LoginForm(props) {
                                     setSession(
                                         res.data.token
                                     );
+                                    localStorage.setItem(
+                                        "token",
+                                        response.data
+                                            .token
+                                    );
                                     console.log(
                                         "success"
                                     );
                                     setSubmitting(
                                         false
+                                    );
+                                    router.push(
+                                        "/dashboard"
                                     );
                                 })
                                 .catch((err) => {
