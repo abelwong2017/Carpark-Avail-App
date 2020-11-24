@@ -17,9 +17,9 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import "../styles/globals.css";
 import theme from "../styles/theme";
 
-export const OriginalImageUrlContext = createContext();
+export const SessionContext = createContext();
 function MyApp({ Component, pageProps }) {
-    const [originalUrl, setOriginalUrl] = useState([]);
+    const [session, setSession] = useState(null);
 
     useEffect(() => {
         // Remove the server-side injected CSS.
@@ -44,18 +44,16 @@ function MyApp({ Component, pageProps }) {
             </Head>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
-                    <AnimatePresence exitBeforeEnter>
-                        <OriginalImageUrlContext.Provider
-                            value={{
-                                originalUrl,
-                                setOriginalUrl,
-                            }}
-                        >
-                            <Component
-                                {...pageProps}
-                            />
-                        </OriginalImageUrlContext.Provider>
-                    </AnimatePresence>
+                <AnimatePresence exitBeforeEnter>
+                    <SessionContext.Provider
+                        value={{
+                            session,
+                            setSession,
+                        }}
+                    >
+                        <Component {...pageProps} />
+                    </SessionContext.Provider>
+                </AnimatePresence>
             </ThemeProvider>
         </>
     );
