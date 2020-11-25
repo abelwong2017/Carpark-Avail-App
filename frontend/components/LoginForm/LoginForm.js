@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
-import styles from "./LoginForm.module.scss";
 import UserErrorModal from "./UserErrorModal/UserErrorModal";
 import { useStyles } from "./LoginFormStyles";
 import { SessionContext } from "../../pages/_app";
@@ -11,13 +10,10 @@ import { Formik, Form, Field } from "formik";
 import axios from "axios";
 
 // MUI components
-import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
-import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import Divider from "@material-ui/core/Divider";
 import { TextField } from "formik-material-ui";
 import LinearProgress from "@material-ui/core/LinearProgress";
-import { useTheme } from "@material-ui/core/styles";
 
 function LoginForm(props) {
     const classes = useStyles();
@@ -194,16 +190,11 @@ function LoginForm(props) {
                                         response.data
                                             .token
                                     );
-                                    console.log(
-                                        response.data
-                                            .token
-                                    );
+
                                     setSubmitting(
                                         false
                                     );
-                                    console.log(
-                                        "success"
-                                    );
+
                                     router.push(
                                         "/dashboard"
                                     );
@@ -282,9 +273,7 @@ function LoginForm(props) {
                                         response.data
                                             .token
                                     );
-                                    console.log(
-                                        "success"
-                                    );
+
                                     setSubmitting(
                                         false
                                     );

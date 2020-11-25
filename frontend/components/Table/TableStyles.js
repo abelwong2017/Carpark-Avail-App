@@ -1,14 +1,5 @@
-import {
-    makeStyles,
-    withStyles,
-} from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
-
-export const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-}));
 
 export const BorderLinearProgress = withStyles(
     (theme) => ({

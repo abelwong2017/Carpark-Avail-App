@@ -1,8 +1,4 @@
-import React, {
-    useEffect,
-    useMemo,
-    useState,
-} from "react";
+import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import styles from "./TableStyles.module.scss";
 
@@ -21,8 +17,6 @@ import {
 } from "react-table";
 
 // MUI Components
-import { useStyles } from "./TableStyles";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import TableContainer from "@material-ui/core/TableContainer";
 import MaUTable from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -36,7 +30,6 @@ import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import Button from "@material-ui/core/Button";
 
 function Table({ columns, data }) {
-    const classes = useStyles();
     data = useMemo(() => [...data], []);
 
     const defaultColumn = React.useMemo(
@@ -59,7 +52,6 @@ function Table({ columns, data }) {
         canPreviousPage,
         pageOptions,
         prepareRow,
-        setPageSize,
         state,
         setGlobalFilter,
     } = useTable(
@@ -83,11 +75,7 @@ function Table({ columns, data }) {
         usePagination
     );
 
-    const {
-        globalFilter,
-        pageIndex,
-        pageSize,
-    } = state;
+    const { globalFilter, pageIndex } = state;
 
     return (
         <div className={styles.componentContainer}>
