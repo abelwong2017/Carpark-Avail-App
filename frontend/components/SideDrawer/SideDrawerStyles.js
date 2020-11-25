@@ -11,10 +11,9 @@ export const useStyles = makeStyles((theme) => ({
         transition: theme.transitions.create(
             ["margin", "width"],
             {
-                easing: theme.transitions.easing.sharp,
-                duration:
-                    theme.transitions.duration
-                        .leavingScreen,
+                easing:
+                    "cubic-bezier(0.37, 0, 0.63, 1)",
+                duration: "0.3s",
             }
         ),
         backgroundColor: "transparent!important",
@@ -26,10 +25,8 @@ export const useStyles = makeStyles((theme) => ({
             ["margin", "width"],
             {
                 easing:
-                    theme.transitions.easing.easeOut,
-                duration:
-                    theme.transitions.duration
-                        .enteringScreen,
+                    "cubic-bezier(0.37, 0, 0.63, 1)",
+                duration: "0.3s",
             }
         ),
     },
@@ -69,9 +66,7 @@ export const useStyles = makeStyles((theme) => ({
             "margin",
             {
                 easing: theme.transitions.easing.sharp,
-                duration:
-                    theme.transitions.duration
-                        .leavingScreen,
+                duration: "0.3s",
             }
         ),
         marginLeft: -drawerWidth,
@@ -82,9 +77,7 @@ export const useStyles = makeStyles((theme) => ({
             {
                 easing:
                     theme.transitions.easing.easeOut,
-                duration:
-                    theme.transitions.duration
-                        .enteringScreen,
+                duration: "0.3s",
             }
         ),
         marginLeft: 0,
