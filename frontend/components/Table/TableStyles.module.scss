@@ -1,0 +1,42 @@
+.componentContainer {
+  padding: 1rem;
+  z-index: 999;
+}
+
+.headerContainer {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600 !important;
+}
+
+.logoContainer {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  margin-left: 5px;
+}
+
+.filterRow:hover {
+  cursor: default !important;
+  margin: 0 !important;
+}
+
+.controlContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  margin: 1rem 0 0 1rem !important;
+  color: white !important;
+  &:disabled {
+    color: grey !important;
+  }
+}
