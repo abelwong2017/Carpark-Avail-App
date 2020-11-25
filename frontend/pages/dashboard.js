@@ -9,12 +9,15 @@ import convertData from "../helperFunctions/dataTransformer";
 import { SessionContext } from "../pages/_app";
 import styles from "../styles/dashboard.module.scss";
 import axios from "axios";
+import { useRouter } from "next/router";
 
+// Components
 import SideDrawer from "../components/SideDrawer/SideDrawer";
 import Table from "../components/Table/Table";
 import SkeletonTable from "../components/Table/SkeletonTable/SkeletonTable";
 
 function dashboard(props) {
+    const router = useRouter();
     const { session } = useContext(SessionContext);
     const [data, setData] = useState(null);
     const columns = useMemo(
@@ -89,6 +92,8 @@ function dashboard(props) {
                 .catch((err) => {
                     console.log(err);
                 });
+        } else {
+            router.push("/login");
         }
     }, []);
 
