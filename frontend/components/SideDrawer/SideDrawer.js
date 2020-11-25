@@ -155,7 +155,7 @@ function SideDrawer({ children }) {
                             {userInfo.contactNumber !==
                             null
                                 ? ` 
-                            ${userInfo.ContactNumber}`
+                            ${userInfo.contactNumber}`
                                 : ""}
                         </span>
                         <Button

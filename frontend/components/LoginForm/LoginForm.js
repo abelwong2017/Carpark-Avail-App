@@ -164,10 +164,6 @@ function LoginForm(props) {
                                     values.password,
                             };
 
-                            // data = JSON.stringify(
-                            //     data
-                            // );
-
                             const config = {
                                 method: "post",
                                 baseURL:
@@ -239,14 +235,14 @@ function LoginForm(props) {
                                         response.data
                                             .email
                                     ) {
-                                        let data = {
+                                        let logInData = {
                                             Email:
                                                 values.email,
                                             Password:
                                                 values.password,
                                         };
 
-                                        const config = {
+                                        const logInConfig = {
                                             method:
                                                 "post",
                                             baseURL:
@@ -256,11 +252,11 @@ function LoginForm(props) {
                                             url:
                                                 "/session",
                                             headers: {},
-                                            data: data,
+                                            data: logInData,
                                         };
                                         // Make call to DB
                                         return axios(
-                                            config
+                                            logInConfig
                                         );
                                     }
                                 })
@@ -270,8 +266,7 @@ function LoginForm(props) {
                                     );
                                     localStorage.setItem(
                                         "token",
-                                        response.data
-                                            .token
+                                        res.data.token
                                     );
 
                                     setSubmitting(
