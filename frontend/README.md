@@ -40,4 +40,24 @@ yarn dev
 
 # File Structure
 
-TBC
+## components
+
+- Contains reusable components found in the main pages
+
+## helperFunctions
+
+- Contains helper functions. No react components here
+
+## pages
+
+- This directory contains the main static pages.
+
+
+## public
+
+- Locally accessible image files
+- Only accessible at build time ([Read more here](https://nextjs.org/learn/basics/data-fetching/two-forms) )
+
+## styles
+
+- Styling for pages components
