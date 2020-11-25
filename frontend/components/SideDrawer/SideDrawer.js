@@ -9,6 +9,7 @@ import { useStyles } from "./SideDrawerStyles";
 import { SessionContext } from "../../pages/_app";
 import axios from "axios";
 import { useRouter } from "next/router";
+import styles from "./SideDrawer.module.scss";
 
 import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -71,7 +72,7 @@ function SideDrawer({ children }) {
                     console.log(err);
                 });
         }
-    }, [session]);
+    }, []);
 
     return (
         <div className={classes.root}>
@@ -190,8 +191,9 @@ function SideDrawer({ children }) {
                 <div
                     className={classes.drawerHeader}
                 />
-                <div></div>
-                {children}
+                <div className={styles.backdrop}>
+                    {children}
+                </div>
             </main>
         </div>
     );

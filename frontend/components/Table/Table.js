@@ -17,6 +17,7 @@ import {
     useSortBy,
     useGlobalFilter,
     useFilters,
+    usePagination,
 } from "react-table";
 
 // MUI Components
@@ -32,6 +33,7 @@ import Paper from "@material-ui/core/Paper";
 import SortIcon from "@material-ui/icons/Sort";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import Button from "@material-ui/core/Button";
 
 function Table({ columns, data }) {
     const classes = useStyles();
@@ -50,8 +52,14 @@ function Table({ columns, data }) {
         getTableProps,
         getTableBodyProps,
         headerGroups,
-        rows,
+        page,
+        nextPage,
+        previousPage,
+        canNextPage,
+        canPreviousPage,
+        pageOptions,
         prepareRow,
+        setPageSize,
         state,
         setGlobalFilter,
     } = useTable(
@@ -60,6 +68,7 @@ function Table({ columns, data }) {
             data,
             defaultColumn,
             initialState: {
+                pageSize: 5,
                 sortBy: [
                     {
                         id: "carparkNumber",
@@ -70,10 +79,15 @@ function Table({ columns, data }) {
         },
         useFilters,
         useGlobalFilter,
-        useSortBy
+        useSortBy,
+        usePagination
     );
 
-    const { globalFilter } = state;
+    const {
+        globalFilter,
+        pageIndex,
+        pageSize,
+    } = state;
 
     return (
         <div className={styles.componentContainer}>
@@ -202,7 +216,7 @@ function Table({ columns, data }) {
                     <TableBody
                         {...getTableBodyProps()}
                     >
-                        {rows.map((row, i) => {
+                        {page.map((row, i) => {
                             prepareRow(row);
                             return (
                                 // eslint-disable-next-line react/jsx-key
@@ -249,6 +263,26 @@ function Table({ columns, data }) {
                     </TableBody>
                 </MaUTable>
             </TableContainer>
+            <div className={styles.controlContainer}>
+                <span className={styles.button}>
+                    Page {pageIndex + 1} of{" "}
+                    {pageOptions.length}
+                </span>
+                <Button
+                    onClick={() => previousPage()}
+                    disabled={!canPreviousPage}
+                    className={styles.button}
+                >
+                    Previous
+                </Button>
+                <Button
+                    onClick={() => nextPage()}
+                    disabled={!canNextPage}
+                    className={styles.button}
+                >
+                    Next
+                </Button>
+            </div>
         </div>
     );
 }

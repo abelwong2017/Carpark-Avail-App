@@ -1,11 +1,13 @@
 .componentContainer {
   padding: 1rem;
+  width: 100% !important;
 }
 
 .paper {
   margin-top: 10vh;
   width: 100%;
-  height: 85vh;
+  height: auto;
+  max-height: 78vh;
   padding: 1rem;
   overflow-y: auto;
   &::-webkit-scrollbar {
@@ -23,6 +25,8 @@
 
 .skeleton {
   border-radius: 5px;
+  width: 100% !important;
+  height: 160px;
 }
 
 .skeletonButton {

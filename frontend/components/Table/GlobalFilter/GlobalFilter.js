@@ -28,6 +28,16 @@ function GlobalFilter({ filter, setFilter }) {
                     setValue(e.target.value);
                     onChange(e.target.value);
                 }}
+                InputLabelProps={{
+                    classes: {
+                        root: styles.cssLabel,
+                    },
+                }}
+                InputProps={{
+                    classes: {
+                        root: styles.inputCss,
+                    },
+                }}
             />
         </div>
     );

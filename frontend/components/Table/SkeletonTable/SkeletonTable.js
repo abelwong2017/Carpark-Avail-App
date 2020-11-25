@@ -19,7 +19,7 @@ function SkeletonTable(props) {
                     height={160}
                     className={styles.skeleton}
                 />
-                {Array.from({ length: 6 }, () =>
+                {Array.from({ length: 4 }, () =>
                     Math.floor(Math.random() * 100)
                 ).map((int, index) => {
                     return (

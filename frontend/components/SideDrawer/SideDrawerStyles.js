@@ -5,6 +5,7 @@ const drawerWidth = 300;
 export const useStyles = makeStyles((theme) => ({
     root: {
         display: "flex",
+        width: "100%",
     },
     appBar: {
         transition: theme.transitions.create(
@@ -60,10 +61,10 @@ export const useStyles = makeStyles((theme) => ({
         // necessary for content to be below app bar
         ...theme.mixins.toolbar,
         justifyContent: "flex-end",
+        height: 0,
     },
     content: {
         flexGrow: 1,
-        padding: theme.spacing(3),
         transition: theme.transitions.create(
             "margin",
             {

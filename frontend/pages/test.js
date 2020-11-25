@@ -10,8 +10,6 @@ import { response } from "../public/response";
 import Table from "../components/Table/Table";
 import SkeletonTable from "../components/Table/SkeletonTable/SkeletonTable";
 
-import LotTypeFilter from "../components/Table/LotTypeFilter/LotTypeFilter";
-
 const test = (props) => {
     const [data, setData] = useState(null);
     const columns = useMemo(

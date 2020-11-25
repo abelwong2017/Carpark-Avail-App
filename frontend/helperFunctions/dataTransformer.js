@@ -22,6 +22,9 @@ export default function convertData(response) {
     }
 
     function convertLotType(lotType) {
+        if (lotTypes[lotType] === undefined) {
+            return "Cars";
+        }
         return lotTypes[lotType];
     }
 
