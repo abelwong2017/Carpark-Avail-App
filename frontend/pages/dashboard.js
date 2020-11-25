@@ -74,7 +74,9 @@ function dashboard(props) {
                     : localStorage.getItem("token");
             const config = {
                 method: "get",
-                baseURL: "https://localhost:44308/api",
+                baseURL:
+                    process.env
+                        .NEXT_PUBLIC_BACKEND_URL,
                 url: "/carparkavailability",
                 headers: {
                     Authorization: `Bearer ${token}`,

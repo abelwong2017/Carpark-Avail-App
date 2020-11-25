@@ -33,6 +33,11 @@ npm run dev
 yarn dev
 ```
 
+# Configuration
+
+1. Edit .env sample file with the backend url
+2. Save the file as ".env"
+
 # File Structure
 
 TBC

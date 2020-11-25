@@ -55,7 +55,9 @@ function SideDrawer({ children }) {
                     : localStorage.getItem("token");
             const config = {
                 method: "get",
-                baseURL: "https://localhost:44308/api",
+                baseURL:
+                    process.env
+                        .NEXT_PUBLIC_BACKEND_URL,
                 url: "/users",
                 headers: {
                     Authorization: `Bearer ${token}`,

@@ -175,7 +175,8 @@ function LoginForm(props) {
                             const config = {
                                 method: "post",
                                 baseURL:
-                                    "https://localhost:44308/api",
+                                    process.env
+                                        .NEXT_PUBLIC_BACKEND_URL,
                                 url: "/session",
                                 headers: {},
                                 data: data,
@@ -235,7 +236,8 @@ function LoginForm(props) {
                             let config = {
                                 method: "post",
                                 baseURL:
-                                    "https://localhost:44308/api",
+                                    process.env
+                                        .NEXT_PUBLIC_BACKEND_URL,
                                 url: "/users",
                                 headers: {},
                                 data: data,
@@ -257,7 +259,9 @@ function LoginForm(props) {
                                             method:
                                                 "post",
                                             baseURL:
-                                                "https://localhost:44308/api",
+                                                process
+                                                    .env
+                                                    .NEXT_PUBLIC_BACKEND_URL,
                                             url:
                                                 "/session",
                                             headers: {},
