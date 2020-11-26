@@ -35,7 +35,11 @@ namespace Carpark_API
 
             // Add CORS policy
             services.AddCors(options => {
-                options.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowCredentials().Build());
+                options.AddPolicy("CorsPolicy", builder => {
+                    builder.WithOrigins("https://localhost:3000", "http://localhost:3000").AllowAnyHeader()
+                                                  .AllowAnyMethod(); ;
+      
+                    });
             });
 
             // Add JWT service
@@ -74,7 +78,7 @@ namespace Carpark_API
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors("CorsPolicy");
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
