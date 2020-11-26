@@ -28,14 +28,17 @@ yarn install
 Next, run the development server:
 
 ```bash
-npm run dev
+npm run build
+npm run start
 # or
-yarn dev
+yarn build
+yarn start
 ```
 
 # Configuration
 
-1. Edit .env sample file with the backend url
+1. Edit .env sample file with the backend url and append "/api" to the end of the url
+    * E.g. "https://localhost:5001/api"
 2. Save the file as ".env"
 
 # File Structure
