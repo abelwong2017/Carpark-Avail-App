@@ -17,7 +17,9 @@
 
 # Installation Guide
 
-Install dependencies with
+1. Have Node installed
+2. Have npm or yarn installed
+3. Install dependencies with
 
 ```bash
 npm install
@@ -25,7 +27,7 @@ npm install
 yarn install
 ```
 
-Next, run the development server:
+4. Next, run the development server:
 
 ```bash
 npm run build
