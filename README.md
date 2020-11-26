@@ -1,6 +1,6 @@
 <div align="center">
   <h1>
-      <img src="Public/Parking.jpg" width="600"> 
+      <img src="Public/WebApp.gif" width="600"> 
       <br>
           Carpark Availability Application
       <br>
