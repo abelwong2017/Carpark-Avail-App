@@ -11,7 +11,7 @@
   <p>
     <a href="#installation-guide">Installation Guide</a> •
       <a href="#configuration">Configuration</a>  •
-      <a href="#file-structure">File Structure</a>  
+      <a href="#api-documentation">API Documentation</a>  
   </p>
 </div>
 
@@ -49,3 +49,5 @@
 3. CORS: If your frontend URL is not "localhost:3000", then edit the file in `Carpark API/Carpark API/Startup.cs` line 39 to the frontend url link
 
 
+# API Documentation
+https://documenter.getpostman.com/view/6322858/TVewZjWy
