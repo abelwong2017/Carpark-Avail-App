@@ -33,11 +33,18 @@ namespace Carpark_API.Controllers
             newUser.FirstName = registeredDetails.FirstName;
             newUser.LastName = registeredDetails.LastName;
             newUser.ContactNumber = registeredDetails.ContactNumber;
+            try
+            {
+                db.Users.Add(newUser);
+                db.SaveChanges();
 
-            db.Users.Add(newUser);
-            db.SaveChanges();
+                return CreatedAtAction("Post", new { email = registeredDetails.Email });
+            }
+            catch (System.Exception e)
+            {
+                return StatusCode(500);
+            }
 
-            return CreatedAtAction("Post", new { email = registeredDetails.Email });
 
         }
 
